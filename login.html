@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Cent Creative Homes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific overrides for login page */
+        body {
+            overflow: hidden;
+        }
+
+        .login-btn {
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-box text-center">
+            <h2 style="margin-bottom: 20px;">Admin Access</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" value="admin" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Enter Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary login-btn">Login</button>
+            </form>
+            <p style="margin-top: 15px; color: #666; font-size: 0.8rem;">Hint: Use 'admin123'</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const pass = document.getElementById('password').value;
+            if (pass === 'admin123') {
+                sessionStorage.setItem('isAdmin', 'true');
+                window.location.href = 'admin.html';
+            } else {
+                alert('Invalid Password');
+            }
+        });
+    </script>
+</body>
+
+</html>

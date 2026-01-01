@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cent Creative Homes | Architectural & 3D Home Design Experts</title>
+    <meta name="description" content="We craft spaces that inspire. From blueprint to photorealistic 3D render.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Cent Creative Homes Logo"> Cent Creative Homes
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="login.html" class="btn-text">Admin Login</a>
+                <a href="#contact" class="btn btn-primary">Book Consultation</a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-badge">Award Winning Studio</div>
+            <h1>Architectural & <br><span class="text-gradient">3D Home Design</span> Experts</h1>
+            <p>Bridging the gap between imagination and reality for residential and commercial spaces. With
+                hyper-realistic visual culture.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Book Consultation</a>
+                <a href="#portfolio" class="btn btn-outline" id="heroVideoBtn">View Portfolio</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="subtitle">Our Expertise</span>
+                <h2>We craft spaces that inspire. From blueprint to photorealistic 3D render.</h2>
+                <p>Our team combines technical precision with artistic vision to deliver designs that are not only
+                    structurally sound but visually breathtaking.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="150">0</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="12">0</span>
+                    <span class="stat-label">Years of Excellence</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="50">0</span>
+                    <span class="stat-label">Int'l Awards</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Client Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Design Services</h2>
+                <p>Comprehensive architectural solutions tailored to your unique needs.</p>
+                <a href="#" class="view-all-link">View All Services <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <h3>Residential Architecture</h3>
+                    <p>Custom home designs tailored to your lifestyle. We focus on getting you plans right, on time and
+                        within budget.</p>
+                    <a href="#" class="service-link">Explore Residential</a>
+                </div>
+                <div class="service-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3>Commercial Planning</h3>
+                    <p>Strategic space planning for businesses that maximizes efficiency while elevating brand identity.
+                    </p>
+                    <a href="#" class="service-link">Explore Commercial</a>
+                </div>
+                <div class="service-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-cubes"></i>
+                    </div>
+                    <h3>3D Interior & Exterior</h3>
+                    <p>High-fidelity visualization bringing concepts to life before construction begins.</p>
+                    <a href="#" class="service-link">Explore 3D Render</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Portfolio</h2>
+                <p>Exploring the intersection of art, engineering, and sustainable living through our curated selection
+                    of projects.</p>
+            </div>
+
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="interior">Interior</button>
+                <button class="filter-btn" data-filter="exterior">Exterior</button>
+            </div>
+
+            <div class="section-header text-center" style="margin-bottom: 30px; text-align: left;">
+                <span class="subtitle">Selected Works</span>
+                <h3>Image Gallery</h3>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Row 1 -->
+                <div class="portfolio-item item-large">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000"
+                        alt="Modern Villa">
+                    <div class="portfolio-overlay">
+                        <h3>Lakeside Villa</h3>
+                        <p>Residential</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800"
+                        alt="Minimalist Living Room">
+                    <div class="portfolio-overlay">
+                        <h3>Nordic Interior</h3>
+                        <p>Interior</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="modern-kitchen.jpg" alt="Modern Kitchen">
+                    <div class="portfolio-overlay">
+                        <h3>Urban Kitchen</h3>
+                        <p>Interior</p>
+                    </div>
+                </div>
+                <!-- Row 2 -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800"
+                        alt="Corporate Office">
+                    <div class="portfolio-overlay">
+                        <h3>Tech Hub</h3>
+                        <p>Commercial</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=800"
+                        alt="Exterior Facade">
+                    <div class="portfolio-overlay">
+                        <h3>Concrete House</h3>
+                        <p>Exterior</p>
+                    </div>
+                </div>
+                <div class="portfolio-item item-large">
+                    <img src="commercial-building.png" alt="Commercial Building">
+                    <div class="portfolio-overlay">
+                        <h3>Retail Complex</h3>
+                        <p>Commercial</p>
+                    </div>
+                </div>
+                <!-- Row 3 -->
+                <div class="portfolio-item">
+                    <img src="luxury-home.png" alt="Luxury Home">
+                    <div class="portfolio-overlay">
+                        <h3>Hillside Estate</h3>
+                        <p>Residential</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=80&w=800"
+                        alt="Modern Architecture">
+                    <div class="portfolio-overlay">
+                        <h3>Glass Facade</h3>
+                        <p>Exterior</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="center-btn" style="margin-top: 30px;">
+                <a href="#" class="btn btn-outline">Load More Projects <i class="fa-solid fa-arrow-down"></i></a>
+            </div>
+
+            <!-- Video Section -->
+            <div class="video-section-header">
+                <span class="subtitle">In Motion</span>
+                <h3>Video Portfolio</h3>
+            </div>
+
+            <div class="video-grid">
+                <div class="video-card" data-video-id="m_f-ZSbMvEQ">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1000"
+                        alt="Skyscraper Video Thumbnail">
+                    <div class="play-overlay">
+                        <div class="play-btn">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>Skyline Tower: 3D Visualization</h4>
+                        <p>A cinematic journey through our latest 50-story mixed-use development, highlighting the
+                            sustainable integration of green spaces at high altitudes.</p>
+                    </div>
+                </div>
+                <div class="video-card" data-video-id="xPPLbEFbCAo">
+                    <img src="https://images.unsplash.com/photo-1600210491892-03d54cc0c574?auto=format&fit=crop&q=80&w=1000"
+                        alt="Interior Video Thumbnail">
+                    <div class="play-overlay">
+                        <div class="play-btn">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>The Nordic Retreat: Interior Tour</h4>
+                        <p>Experience the warmth of minimalism. This walkthrough explores material contrasts between raw
+                            concrete and warm oak in a residential setting.</p>
+                    </div>
+                </div>
+                <!-- Additional Videos to fill space -->
+                <div class="video-card" data-video-id="K4TOrB7at0Y">
+                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=1000"
+                        alt="Villa Drone Shot">
+                    <div class="play-overlay">
+                        <div class="play-btn">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>Coastal Villa: Drone Footage</h4>
+                        <p>Aerial perspectives of our award-winning coastal property, showcasing how the structure
+                            harmonizes with the surrounding cliffs.</p>
+                    </div>
+                </div>
+                <div class="video-card" data-video-id="tgbNymZ7vqY">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000"
+                        alt="City Planning">
+                    <div class="play-overlay">
+                        <div class="play-btn">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>Urban Regeneration: Concept Phase</h4>
+                        <p>A behind-the-scenes look at the conceptualization of the downtown revitalization project,
+                            from sketch to final render.</p>
+                    </div>
+                </div>
+                <div class="video-card" data-video-id="hA1G82-gGjU">
+                    <img src="https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&q=80&w=1000"
+                        alt="Sustainable Living">
+                    <div class="play-overlay">
+                        <div class="play-btn">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>Eco-Friendly Habitat</h4>
+                        <p>Exploring sustainable materials and energy-efficient designs in our latest eco-village
+                            project.</p>
+                    </div>
+                </div>
+                <div class="video-card" data-video-id="Hh8s_7i52lQ">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1000"
+                        alt="Modern Glass House">
+                    <div class="play-overlay">
+                        <div class="play-btn">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>The Glass House</h4>
+                        <p>A transparent approach to living. Blending indoor comfort with outdoor beauty.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="center-btn">
+                <a href="#" class="btn btn-outline">View Full Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="video-wrapper">
+                <iframe id="videoFrame" src="" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <section id="contact" class="contact-section">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <span class="subtitle">Start Your Project</span>
+                <h2>Let's Build Extraordinary</h2>
+                <p>Reach out to discuss your residential or commercial project requirements. We transform visions into
+                    structural masterpieces.</p>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <h4>Call Us</h4>
+                        <p>+91 8821833411</p>
+                        <small>Mon-Fri, 9am - 6pm IST</small>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <h4>Email Us</h4>
+                        <p>centcreativehomes@gmail.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4>Visit Our Studio</h4>
+                        <p>216, Vrindavan Colony, Industrial Estate,<br>Indore (Madhya Pradesh) India</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <div>
+                        <h4>Chat on WhatsApp</h4>
+                        <p><a href="https://wa.me/918821833411?text=Hello%20Cent%20Creative%20Homes,%20I%20would%20like%20to%20discuss%20a%20project."
+                                target="_blank" style="color: var(--primary-color); text-decoration: none;">+91
+                                8821833411</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Project Type</label>
+                        <select id="type" name="type">
+                            <option value="Residential">Residential Design</option>
+                            <option value="Commercial">Commercial Design</option>
+                            <option value="Interior">Interior Design</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Estimated Budget</label>
+                        <div class="budget-options">
+                            <button type="button" class="budget-btn" data-value="<50k">&lt; $50k</button>
+                            <button type="button" class="budget-btn active" data-value="50k-150k">$50k - $150k</button>
+                            <button type="button" class="budget-btn" data-value="150k-500k">$150k - $500k</button>
+                            <button type="button" class="budget-btn" data-value="500k+">$500k+</button>
+                        </div>
+                        <input type="hidden" id="budget" name="budget" value="50k-150k">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your vision..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">Send Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="Cent Creative Homes Logo"> Cent Creative Homes
+                </a>
+                <p>Award-winning architectural studio specializing in modern residential and commercial design.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">News & Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Residential</a></li>
+                    <li><a href="#">Commercial</a></li>
+                    <li><a href="#">3D Rendering</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Subscribe for the latest design trends.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email">
+                    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2025 Cent Creative Homes. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

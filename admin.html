@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Cent Creative Homes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar" style="background: #111; position: relative; padding: 15px 0;">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-compass-drafting"></i> Cent Creative Homes Admin
+            </a>
+            <div class="nav-actions">
+                <span class="btn-text">Welcome, Admin</span>
+                <button id="logoutBtn" class="btn btn-outline"
+                    style="padding: 8px 20px; font-size: 0.8rem;">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding: 50px 20px;">
+        <div class="admin-header">
+            <h2>Project Inquiries</h2>
+            <div class="stats-mini">
+                <span style="color: #888;">Total Requests: <strong id="totalCount"
+                        style="color: #fff;">0</strong></span>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <div style="overflow-x: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Type</th>
+                            <th>Budget</th>
+                            <th>Message</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Content via JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="emptyState" class="text-center" style="display: none; padding: 40px; color: #666;">
+                <i class="fa-regular fa-folder-open" style="font-size: 40px; margin-bottom: 20px;"></i>
+                <p>No new inquiries found.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auth Check
+        if (sessionStorage.getItem('isAdmin') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            sessionStorage.removeItem('isAdmin');
+            window.location.href = 'login.html';
+        });
+
+        // Load Data
+        function loadMessages() {
+            const messages = JSON.parse(localStorage.getItem('messages') || '[]');
+            const tbody = document.getElementById('tableBody');
+            const emptyState = document.getElementById('emptyState');
+            const totalCount = document.getElementById('totalCount');
+
+            totalCount.innerText = messages.length;
+            tbody.innerHTML = '';
+
+            if (messages.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            // Show new first
+            messages.reverse().forEach((msg, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="color: #888; font-size: 0.9rem;">${msg.date || '-'}</td>
+                    <td><strong>${msg.name}</strong></td>
+                    <td>${msg.email}</td>
+                    <td><span class="status-badge" style="background: #222; color: #fff; border: 1px solid #333;">${msg.type}</span></td>
+                    <td>${msg.budget}</td>
+                    <td style="max-width: 300px;">${msg.message}</td>
+                    <td>
+                        <button onclick="deleteMessage(${msg.id})" style="background: none; border: none; color: #ff4444; cursor: pointer;">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function deleteMessage(id) {
+            if (confirm('Delete this inquiry?')) {
+                let messages = JSON.parse(localStorage.getItem('messages') || '[]');
+                messages = messages.filter(m => m.id !== id);
+                localStorage.setItem('messages', JSON.stringify(messages));
+                loadMessages();
+            }
+        }
+
+        // Init
+        loadMessages();
+    </script>
+</body>
+
+</html>
