@@ -1,3 +1,25 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBOPzRY9EBi_Zcro-by975YnrizOnom7IU",
+    authDomain: "cent-creative-homes-3749c.firebaseapp.com",
+    projectId: "cent-creative-homes-3749c",
+    storageBucket: "cent-creative-homes-3749c.firebasestorage.app",
+    messagingSenderId: "897296608212",
+    appId: "1:897296608212:web:2eb7ba601a62079025c441",
+    measurementId: "G-QLQ359797X"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Initialize EmailJS
+(function () {
+    // Replace with your actual EmailJS Public Key
+    emailjs.init("YOUR_PUBLIC_KEY");
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // Navbar Scroll Effect
@@ -70,32 +92,165 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Contact Form Handling (Mock CMS)
+    // Helper to show form feedback
+    function showFeedback(elementId, message, isSuccess) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.innerText = message;
+            element.style.display = 'block';
+            element.style.backgroundColor = isSuccess ? 'rgba(0, 255, 0, 0.1)' : 'rgba(255, 0, 0, 0.1)';
+            element.style.color = isSuccess ? '#4ade80' : '#f87171';
+            element.style.border = `1px solid ${isSuccess ? '#4ade8055' : '#f8717155'}`;
+
+            // Show Success Modal if submission worked
+            if (isSuccess) {
+                const successModal = document.getElementById('successModal');
+                if (successModal) {
+                    successModal.classList.add('active');
+                    document.body.classList.add('no-scroll');
+                }
+
+                // Also hide the inline message after 5 seconds
+                setTimeout(() => {
+                    element.style.display = 'none';
+                }, 5000);
+            }
+        }
+    }
+
+    // Success Modal Closing Logic
+    const successModal = document.getElementById('successModal');
+    const closeSuccessBtn = document.getElementById('closeSuccessModal');
+    const whatsappNotifyBtn = document.getElementById('whatsappNotifyBtn');
+
+    let lastSubmittedData = null;
+
+    if (successModal && closeSuccessBtn) {
+        closeSuccessBtn.addEventListener('click', () => {
+            successModal.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+
+        // Close on outside click
+        successModal.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                successModal.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
+        });
+    }
+
+    if (whatsappNotifyBtn) {
+        whatsappNotifyBtn.addEventListener('click', () => {
+            if (lastSubmittedData) {
+                const adminPhone = "918821833411";
+                const message = `*New Inquiry Received!*%0A%0A` +
+                    `*Name:* ${lastSubmittedData.name}%0A` +
+                    `*Email:* ${lastSubmittedData.email}%0A` +
+                    `*Mobile:* ${lastSubmittedData.mobile}%0A` +
+                    `*Type:* ${lastSubmittedData.type}%0A` +
+                    `*Budget:* ${lastSubmittedData.budget}%0A` +
+                    `*Time:* ${lastSubmittedData.contactTime}%0A` +
+                    `*Details:* ${lastSubmittedData.message}`;
+
+                window.open(`https://wa.me/${adminPhone}?text=${message}`, '_blank');
+            }
+        });
+    }
+
+    // Contact Form Handling (Firebase)
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Get values
-            const formData = {
-                id: Date.now(),
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                type: document.getElementById('type').value,
-                budget: document.getElementById('budget').value,
-                message: document.getElementById('message').value,
-                date: new Date().toLocaleDateString(),
-                status: 'New'
-            };
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = 'Sending...';
+            submitBtn.disabled = true;
 
-            // Save to LocalStorage
-            let messages = JSON.parse(localStorage.getItem('messages') || '[]');
-            messages.push(formData);
-            localStorage.setItem('messages', JSON.stringify(messages));
+            try {
+                // Get values
+                const formData = {
+                    formId: 'cent-creative-homes-booking-form-id',
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    mobile: document.getElementById('mobile').value,
+                    type: document.getElementById('type').value,
+                    budget: document.getElementById('budget').value,
+                    contactTime: document.getElementById('contactTime').value,
+                    message: document.getElementById('message').value,
+                    createdAt: serverTimestamp(),
+                    status: 'New'
+                };
 
-            // Show success (simple alert for now, or custom UI)
-            alert('Request sent successfully! We will contact you shortly.');
-            contactForm.reset();
+                lastSubmittedData = formData;
+
+                // 1. Save to Firestore
+                await addDoc(collection(db, "cent-creative-homes-booking-form"), formData);
+
+                // 2. Send Email via EmailJS
+                try {
+                    await emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+                        to_name: "Cent Creative Homes Admin",
+                        from_name: formData.name,
+                        from_email: formData.email,
+                        mobile: formData.mobile,
+                        project_type: formData.type,
+                        budget: formData.budget,
+                        preferred_time: formData.contactTime,
+                        message: formData.message,
+                        reply_to: formData.email
+                    });
+                    console.log("Email sent successfully!");
+                } catch (emailError) {
+                    console.warn("EmailJS failed (probably keys not set):", emailError);
+                }
+
+                showFeedback('contactMessage', 'Request sent successfully! We will contact you shortly.', true);
+                contactForm.reset();
+                // Reset budget buttons
+                budgetBtns.forEach(b => b.classList.remove('active'));
+                if (document.querySelector('[data-value="50k-150k"]')) {
+                    document.querySelector('[data-value="50k-150k"]').classList.add('active');
+                }
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                showFeedback('contactMessage', 'An error occurred. Please try again later.', false);
+            } finally {
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+    // Newsletter Form Handling
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById('newsletterEmail');
+            const submitBtn = document.getElementById('newsletterBtn');
+            const originalContent = submitBtn.innerHTML;
+
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+            submitBtn.disabled = true;
+
+            try {
+                await addDoc(collection(db, "subscribers"), {
+                    email: emailInput.value,
+                    subscribedAt: serverTimestamp()
+                });
+
+                showFeedback('newsletterMessage', 'Thanks for subscribing!', true);
+                newsletterForm.reset();
+            } catch (error) {
+                console.error("Error adding subscriber: ", error);
+                showFeedback('newsletterMessage', 'Failed to subscribe.', false);
+            } finally {
+                submitBtn.innerHTML = originalContent;
+                submitBtn.disabled = false;
+            }
         });
     }
 

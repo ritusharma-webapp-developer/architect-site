@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="style.css">
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -309,7 +311,8 @@
                 </div>
             </div>
             <div class="center-btn">
-                <a href="#" class="btn btn-outline">View Full Portfolio</a>
+                <a href="https://www.youtube.com/@CentCreativeHomes/videos" target="_blank" class="btn btn-outline">View
+                    Full Portfolio</a>
             </div>
         </div>
     </section>
@@ -369,6 +372,7 @@
 
             <div class="contact-form-wrapper">
                 <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="formId" value="cent-creative-homes-booking-form-id">
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" placeholder="John Doe" required>
@@ -376,6 +380,10 @@
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="tel" id="mobile" name="mobile" placeholder="+91 8821833411" required>
                     </div>
                     <div class="form-group">
                         <label for="type">Project Type</label>
@@ -396,11 +404,23 @@
                         <input type="hidden" id="budget" name="budget" value="50k-150k">
                     </div>
                     <div class="form-group">
+                        <label for="contactTime">Preferred Contact Time</label>
+                        <select id="contactTime" name="contactTime">
+                            <option value="Morning">Morning (9 AM - 12 PM)</option>
+                            <option value="Afternoon">Afternoon (12 PM - 4 PM)</option>
+                            <option value="Evening">Evening (4 PM - 7 PM)</option>
+                            <option value="Anytime">Anytime</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="message">Project Details</label>
                         <textarea id="message" name="message" rows="4" placeholder="Tell us about your vision..."
                             required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary full-width">Send Request</button>
+                    <div id="contactMessage" class="form-feedback"
+                        style="display: none; margin-top: 15px; padding: 10px; border-radius: 4px; text-align: center;">
+                    </div>
                 </form>
             </div>
         </div>
@@ -433,10 +453,12 @@
             <div class="footer-newsletter">
                 <h4>Newsletter</h4>
                 <p>Subscribe for the latest design trends.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Your email">
-                    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                <form id="newsletterForm" class="newsletter-form">
+                    <input type="email" id="newsletterEmail" placeholder="Your email" required>
+                    <button type="submit" id="newsletterBtn"><i class="fa-solid fa-arrow-right"></i></button>
                 </form>
+                <div id="newsletterMessage" class="form-feedback"
+                    style="display: none; margin-top: 10px; font-size: 0.8rem;"></div>
             </div>
         </div>
         <div class="footer-bottom container">
@@ -449,7 +471,24 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Success Popup Modal -->
+    <div id="successModal" class="success-modal">
+        <div class="success-modal-content text-center">
+            <div class="success-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3>Request Sent!</h3>
+            <p>Thank you for reaching out. Our team will review your project details and contact you shortly.</p>
+            <div class="success-actions">
+                <button id="whatsappNotifyBtn" class="btn">
+                    <i class="fa-brands fa-whatsapp"></i> Confirm on WhatsApp
+                </button>
+                <button id="closeSuccessModal" class="btn btn-outline">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>

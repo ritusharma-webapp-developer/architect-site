@@ -41,8 +41,11 @@
                             <th>Date</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Time</th>
                             <th>Type</th>
                             <th>Budget</th>
+                            <th>Status</th>
                             <th>Message</th>
                             <th>Actions</th>
                         </tr>
@@ -57,9 +60,54 @@
                 <p>No new inquiries found.</p>
             </div>
         </div>
+
+        <div class="admin-header" style="margin-top: 50px;">
+            <h2>Newsletter Subscribers</h2>
+            <div class="stats-mini">
+                <span style="color: #888;">Total Subscribers: <strong id="subCount"
+                        style="color: #fff;">0</strong></span>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <div style="overflow-x: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Email Address</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subTableBody">
+                        <!-- Content via JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="subEmptyState" class="text-center" style="display: none; padding: 40px; color: #666;">
+                <i class="fa-regular fa-envelope" style="font-size: 40px; margin-bottom: 20px;"></i>
+                <p>No subscribers yet.</p>
+            </div>
+        </div>
     </div>
 
-    <script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore, collection, onSnapshot, query, orderBy, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBOPzRY9EBi_Zcro-by975YnrizOnom7IU",
+            authDomain: "cent-creative-homes-3749c.firebaseapp.com",
+            projectId: "cent-creative-homes-3749c",
+            storageBucket: "cent-creative-homes-3749c.firebasestorage.app",
+            messagingSenderId: "897296608212",
+            appId: "1:897296608212:web:2eb7ba601a62079025c441",
+            measurementId: "G-QLQ359797X"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
         // Auth Check
         if (sessionStorage.getItem('isAdmin') !== 'true') {
             window.location.href = 'login.html';
@@ -71,12 +119,21 @@
             window.location.href = 'login.html';
         });
 
-        // Load Data
-        function loadMessages() {
-            const messages = JSON.parse(localStorage.getItem('messages') || '[]');
-            const tbody = document.getElementById('tableBody');
-            const emptyState = document.getElementById('emptyState');
-            const totalCount = document.getElementById('totalCount');
+        const tbody = document.getElementById('tableBody');
+        const emptyState = document.getElementById('emptyState');
+        const totalCount = document.getElementById('totalCount');
+
+        const subTableBody = document.getElementById('subTableBody');
+        const subEmptyState = document.getElementById('subEmptyState');
+        const subCount = document.getElementById('subCount');
+
+        // Real-time Inquiries sync
+        const q = query(collection(db, "cent-creative-homes-booking-form"), orderBy("createdAt", "desc"));
+        onSnapshot(q, (snapshot) => {
+            const messages = [];
+            snapshot.forEach((doc) => {
+                messages.push({ id: doc.id, ...doc.data() });
+            });
 
             totalCount.innerText = messages.length;
             tbody.innerHTML = '';
@@ -87,37 +144,102 @@
             }
 
             emptyState.style.display = 'none';
-            // Show new first
-            messages.reverse().forEach((msg, index) => {
+            messages.forEach((msg) => {
+                const dateStr = msg.createdAt ? new Date(msg.createdAt.seconds * 1000).toLocaleDateString() : 'Just now';
                 const tr = document.createElement('tr');
+                const statusColor = msg.status === 'New' ? '#FFD700' : '#4ade80';
+
                 tr.innerHTML = `
-                    <td style="color: #888; font-size: 0.9rem;">${msg.date || '-'}</td>
+                    <td style="color: #888; font-size: 0.9rem;">${dateStr}</td>
                     <td><strong>${msg.name}</strong></td>
                     <td>${msg.email}</td>
+                    <td>${msg.mobile || '-'}</td>
+                    <td>${msg.contactTime || '-'}</td>
                     <td><span class="status-badge" style="background: #222; color: #fff; border: 1px solid #333;">${msg.type}</span></td>
                     <td>${msg.budget}</td>
-                    <td style="max-width: 300px;">${msg.message}</td>
                     <td>
-                        <button onclick="deleteMessage(${msg.id})" style="background: none; border: none; color: #ff4444; cursor: pointer;">
+                        <select class="status-select" data-id="${msg.id}" style="background: #111; color: ${statusColor}; border: 1px solid #333; padding: 5px; border-radius: 4px; cursor: pointer;">
+                            <option value="New" ${msg.status === 'New' ? 'selected' : ''}>New</option>
+                            <option value="Contacted" ${msg.status === 'Contacted' ? 'selected' : ''}>Contacted</option>
+                            <option value="Closed" ${msg.status === 'Closed' ? 'selected' : ''}>Closed</option>
+                        </select>
+                    </td>
+                    <td style="max-width: 250px;">${msg.message}</td>
+                    <td>
+                        <button class="delete-btn" data-id="${msg.id}" style="background: none; border: none; color: #ff4444; cursor: pointer;">
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </td>
                 `;
                 tbody.appendChild(tr);
             });
-        }
 
-        function deleteMessage(id) {
-            if (confirm('Delete this inquiry?')) {
-                let messages = JSON.parse(localStorage.getItem('messages') || '[]');
-                messages = messages.filter(m => m.id !== id);
-                localStorage.setItem('messages', JSON.stringify(messages));
-                loadMessages();
+            // Re-attach delete listeners
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', () => deleteMessage(btn.dataset.id, 'cent-creative-homes-booking-form'));
+            });
+
+            // Status Update listener
+            document.querySelectorAll('.status-select').forEach(select => {
+                select.addEventListener('change', async (e) => {
+                    const id = e.target.dataset.id;
+                    const newStatus = e.target.value;
+                    try {
+                        await updateDoc(doc(db, "cent-creative-homes-booking-form", id), { status: newStatus });
+                    } catch (error) {
+                        console.error("Error updating status: ", error);
+                    }
+                });
+            });
+        });
+
+        // Real-time Subscribers sync
+        const subQ = query(collection(db, "subscribers"), orderBy("subscribedAt", "desc"));
+        onSnapshot(subQ, (snapshot) => {
+            const subs = [];
+            snapshot.forEach((doc) => {
+                subs.push({ id: doc.id, ...doc.data() });
+            });
+
+            subCount.innerText = subs.length;
+            subTableBody.innerHTML = '';
+
+            if (subs.length === 0) {
+                subEmptyState.style.display = 'block';
+                return;
+            }
+
+            subEmptyState.style.display = 'none';
+            subs.forEach((sub) => {
+                const dateStr = sub.subscribedAt ? new Date(sub.subscribedAt.seconds * 1000).toLocaleDateString() : 'Just now';
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="color: #888; font-size: 0.9rem;">${dateStr}</td>
+                    <td>${sub.email}</td>
+                    <td>
+                        <button class="delete-sub-btn" data-id="${sub.id}" style="background: none; border: none; color: #ff4444; cursor: pointer;">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                subTableBody.appendChild(tr);
+            });
+
+            document.querySelectorAll('.delete-sub-btn').forEach(btn => {
+                btn.addEventListener('click', () => deleteMessage(btn.dataset.id, 'subscribers'));
+            });
+        });
+
+        async function deleteMessage(id, col) {
+            if (confirm(`Delete this ${col === 'cent-creative-homes-booking-form' ? 'inquiry' : 'subscriber'}?`)) {
+                try {
+                    await deleteDoc(doc(db, col, id));
+                } catch (error) {
+                    console.error("Error deleting document: ", error);
+                    alert("Failed to delete. Check console for details.");
+                }
             }
         }
-
-        // Init
-        loadMessages();
     </script>
 </body>
 
