@@ -147,7 +147,7 @@
             messages.forEach((msg) => {
                 const dateStr = msg.createdAt ? new Date(msg.createdAt.seconds * 1000).toLocaleDateString() : 'Just now';
                 const tr = document.createElement('tr');
-                const statusColor = msg.status === 'New' ? '#FFD700' : '#4ade80';
+                const statusColor = msg.status === 'New' ? '#2f81f7' : '#4ade80';
 
                 tr.innerHTML = `
                     <td style="color: #888; font-size: 0.9rem;">${dateStr}</td>
