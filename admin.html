@@ -62,6 +62,63 @@
         </div>
 
         <div class="admin-header" style="margin-top: 50px;">
+            <h2>Manage Portfolio</h2>
+            <div class="stats-mini">
+                <span style="color: #888;">Total Projects: <strong id="portfolioCount"
+                        style="color: #fff;">0</strong></span>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h3 style="margin-bottom: 20px; font-size: 1rem; color: var(--primary-color);">Add New Project</h3>
+            <form id="portfolioForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; align-items: end;">
+                <div class="form-group">
+                    <label>Project Title</label>
+                    <input type="text" id="pTitle" placeholder="e.g. Hillside Villa" required style="width: 100%; background: #111; color: #fff; border: 1px solid #333; padding: 10px; border-radius: 4px;">
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="pCategory" required style="width: 100%; background: #111; color: #fff; border: 1px solid #333; padding: 10px; border-radius: 4px;">
+                        <option value="Full Construction">Full Construction</option>
+                        <option value="Residential">Residential</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Interior">Interior</option>
+                        <option value="Exterior">Exterior</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="url" id="pUrl" placeholder="https://images.unsplash..." required style="width: 100%; background: #111; color: #fff; border: 1px solid #333; padding: 10px; border-radius: 4px;">
+                </div>
+                <div class="form-group" style="display: flex; align-items: center; gap: 10px; padding-bottom: 10px;">
+                    <input type="checkbox" id="pIsLarge" style="width: 20px; height: 20px; cursor: pointer;">
+                    <label for="pIsLarge" style="margin: 0; cursor: pointer;">Large Grid Item</label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="padding: 10px; white-space: nowrap;">Add Project</button>
+            </form>
+
+            <div style="margin-top: 40px; overflow-x: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Preview</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Size</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="portfolioTableBody">
+                        <!-- Content via JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="portfolioEmptyState" class="text-center" style="display: none; padding: 40px; color: #666;">
+                <p>No projects in portfolio yet.</p>
+            </div>
+        </div>
+
+        <div class="admin-header" style="margin-top: 50px;">
             <h2>Newsletter Subscribers</h2>
             <div class="stats-mini">
                 <span style="color: #888;">Total Subscribers: <strong id="subCount"
@@ -93,7 +150,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-        import { getFirestore, collection, onSnapshot, query, orderBy, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getFirestore, collection, onSnapshot, query, orderBy, deleteDoc, doc, updateDoc, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBOPzRY9EBi_Zcro-by975YnrizOnom7IU",
@@ -239,6 +296,80 @@
                     alert("Failed to delete. Check console for details.");
                 }
             }
+        }
+
+        // Portfolio Management
+        const pForm = document.getElementById('portfolioForm');
+        const pTbody = document.getElementById('portfolioTableBody');
+        const pEmptyState = document.getElementById('portfolioEmptyState');
+        const pCount = document.getElementById('portfolioCount');
+
+        // Real-time Portfolio sync
+        const pQ = query(collection(db, "portfolio-items"), orderBy("createdAt", "desc"));
+        onSnapshot(pQ, (snapshot) => {
+            const items = [];
+            snapshot.forEach((doc) => {
+                items.push({ id: doc.id, ...doc.data() });
+            });
+
+            pCount.innerText = items.length;
+            pTbody.innerHTML = '';
+
+            if (items.length === 0) {
+                pEmptyState.style.display = 'block';
+                return;
+            }
+
+            pEmptyState.style.display = 'none';
+            items.forEach((item) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><img src="${item.imageUrl}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #333;"></td>
+                    <td><strong>${item.title}</strong></td>
+                    <td>${item.category}</td>
+                    <td>${item.isLarge ? 'Large' : 'Standard'}</td>
+                    <td>
+                        <button class="delete-portfolio-btn" data-id="${item.id}" style="background: none; border: none; color: #ff4444; cursor: pointer;">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                pTbody.appendChild(tr);
+            });
+
+            document.querySelectorAll('.delete-portfolio-btn').forEach(btn => {
+                btn.addEventListener('click', () => deleteMessage(btn.dataset.id, 'portfolio-items'));
+            });
+        });
+
+        // Add Portfolio Project
+        if (pForm) {
+            pForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const submitBtn = pForm.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Adding...';
+
+                try {
+                    const newItem = {
+                        title: document.getElementById('pTitle').value,
+                        category: document.getElementById('pCategory').value,
+                        imageUrl: document.getElementById('pUrl').value,
+                        isLarge: document.getElementById('pIsLarge').checked,
+                        createdAt: serverTimestamp()
+                    };
+
+                    await addDoc(collection(db, "portfolio-items"), newItem);
+                    pForm.reset();
+                    alert("Project added successfully!");
+                } catch (error) {
+                    console.error("Error adding project: ", error);
+                    alert("Failed to add project. Check console.");
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'Add Project';
+                }
+            });
         }
     </script>
 </body>

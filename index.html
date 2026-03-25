@@ -33,7 +33,7 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="login.html" class="btn-text">Admin Login</a>
+                
                 <a href="#contact" class="btn btn-primary">Book Consultation</a>
             </div>
             <div class="hamburger">
@@ -91,11 +91,19 @@
     <section id="services" class="services-section">
         <div class="container">
             <div class="section-header">
-                <h2>Design Services</h2>
+                <h2>Our Services</h2>
                 <p>Comprehensive architectural solutions tailored to your unique needs.</p>
                 <a href="#" class="view-all-link">View All Services <i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-trowel-bricks"></i>
+                    </div>
+                    <h3>Full Construction Work</h3>
+                    <p>End-to-end construction services for residential and commercial projects, ensuring quality, safety, and timely delivery.</p>
+                    <a href="full-construction.html" class="service-link">Explore Construction</a>
+                </div>
                 <div class="service-card">
                     <div class="icon-box">
                         <i class="fa-solid fa-house-chimney"></i>
@@ -103,7 +111,7 @@
                     <h3>Residential Architecture</h3>
                     <p>Custom home designs tailored to your lifestyle. We focus on getting you plans right, on time and
                         within budget.</p>
-                    <a href="#" class="service-link">Explore Residential</a>
+                    <a href="residential-architecture.html" class="service-link">Explore Residential</a>
                 </div>
                 <div class="service-card">
                     <div class="icon-box">
@@ -112,7 +120,7 @@
                     <h3>Commercial Planning</h3>
                     <p>Strategic space planning for businesses that maximizes efficiency while elevating brand identity.
                     </p>
-                    <a href="#" class="service-link">Explore Commercial</a>
+                    <a href="commercial-planning.html" class="service-link">Explore Commercial</a>
                 </div>
                 <div class="service-card">
                     <div class="icon-box">
@@ -120,7 +128,7 @@
                     </div>
                     <h3>3D Interior & Exterior</h3>
                     <p>High-fidelity visualization bringing concepts to life before construction begins.</p>
-                    <a href="#" class="service-link">Explore 3D Render</a>
+                    <a href="3d-visualization.html" class="service-link">Explore 3D Render</a>
                 </div>
             </div>
         </div>
@@ -136,6 +144,7 @@
 
             <div class="portfolio-filter">
                 <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="full construction">Full Construction</button>
                 <button class="filter-btn" data-filter="residential">Residential</button>
                 <button class="filter-btn" data-filter="commercial">Commercial</button>
                 <button class="filter-btn" data-filter="interior">Interior</button>
@@ -148,69 +157,10 @@
             </div>
 
             <div class="portfolio-grid">
-                <!-- Row 1 -->
-                <div class="portfolio-item item-large">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000"
-                        alt="Modern Villa">
-                    <div class="portfolio-overlay">
-                        <h3>Lakeside Villa</h3>
-                        <p>Residential</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800"
-                        alt="Minimalist Living Room">
-                    <div class="portfolio-overlay">
-                        <h3>Nordic Interior</h3>
-                        <p>Interior</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="modern-kitchen.jpg" alt="Modern Kitchen">
-                    <div class="portfolio-overlay">
-                        <h3>Urban Kitchen</h3>
-                        <p>Interior</p>
-                    </div>
-                </div>
-                <!-- Row 2 -->
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800"
-                        alt="Corporate Office">
-                    <div class="portfolio-overlay">
-                        <h3>Tech Hub</h3>
-                        <p>Commercial</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=800"
-                        alt="Exterior Facade">
-                    <div class="portfolio-overlay">
-                        <h3>Concrete House</h3>
-                        <p>Exterior</p>
-                    </div>
-                </div>
-                <div class="portfolio-item item-large">
-                    <img src="commercial-building.png" alt="Commercial Building">
-                    <div class="portfolio-overlay">
-                        <h3>Retail Complex</h3>
-                        <p>Commercial</p>
-                    </div>
-                </div>
-                <!-- Row 3 -->
-                <div class="portfolio-item">
-                    <img src="luxury-home.png" alt="Luxury Home">
-                    <div class="portfolio-overlay">
-                        <h3>Hillside Estate</h3>
-                        <p>Residential</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=80&w=800"
-                        alt="Modern Architecture">
-                    <div class="portfolio-overlay">
-                        <h3>Glass Facade</h3>
-                        <p>Exterior</p>
-                    </div>
+                <!-- Data fetched from Firebase portfolio-items collection -->
+                <div class="text-center" style="grid-column: 1/-1; padding: 40px; color: #666;">
+                    <i class="fa-solid fa-spinner fa-spin" style="font-size: 30px; margin-bottom: 15px;"></i>
+                    <p>Loading masterpiece projects...</p>
                 </div>
             </div>
 
@@ -356,7 +306,7 @@
                     <i class="fa-solid fa-location-dot"></i>
                     <div>
                         <h4>Visit Our Studio</h4>
-                        <p>216, Vrindavan Colony, Industrial Estate,<br>Indore (Madhya Pradesh) India</p>
+                        <p>310, ShriKrishna Divine Mall,<br>Above Lotus Showroom, Marimata Square,<br>Indore(M.P.)</p>
                     </div>
                 </div>
                 <div class="info-item">
@@ -488,7 +438,377 @@
         </div>
     </div>
 
-    <script type="module" src="script.js"></script>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918821833411?text=Hello%20Cent%20Creative%20Homes,%20I%20would%20like%20to%20discuss%20a%20project." 
+       class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+
+    <!-- Firebase SDK Compat (Required for file:// protocol) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        (function() {
+            console.log("Portfolio initialization starting (Compat Mode)...");
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyBOPzRY9EBi_Zcro-by975YnrizOnom7IU",
+                authDomain: "cent-creative-homes-3749c.firebaseapp.com",
+                projectId: "cent-creative-homes-3749c",
+                storageBucket: "cent-creative-homes-3749c.firebasestorage.app",
+                messagingSenderId: "897296608212",
+                appId: "1:897296608212:web:2eb7ba601a62079025c441",
+                measurementId: "G-QLQ359797X"
+            };
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            const db = firebase.firestore();
+
+            // Lightbox Logic
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const closeBtn = document.querySelector('.lightbox-close');
+
+            window.openLightbox = function(src, title) {
+                if (!lightbox || !lightboxImg) return;
+                // High Quality Hack for Unsplash
+                let highQualitySrc = src;
+                if (src.includes('unsplash.com')) {
+                    if (src.includes('?')) {
+                        highQualitySrc = src.split('?')[0] + '?auto=format&fit=crop&q=100&w=2400';
+                    } else {
+                        highQualitySrc += '?auto=format&fit=crop&q=100&w=2400';
+                    }
+                }
+                lightboxImg.src = highQualitySrc;
+                lightboxCaption.innerText = title;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            if (closeBtn) {
+                closeBtn.onclick = () => {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                };
+            }
+
+            if (lightbox) {
+                lightbox.onclick = (e) => {
+                    if (e.target === lightbox) {
+                        lightbox.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                };
+            }
+
+            // Navbar Scroll Effect
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            // Scroll Spy for Nav Links
+            const sections = document.querySelectorAll('section, header');
+            const navItems = document.querySelectorAll('.nav-links a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.pageYOffset >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href').includes(current)) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Mobile Menu
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    hamburger.classList.toggle('toggle');
+                    document.body.classList.toggle('no-scroll');
+                });
+
+                const links = navLinks.querySelectorAll('a');
+                links.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('toggle');
+                        document.body.classList.remove('no-scroll');
+                    });
+                });
+            }
+
+            // Budget Buttons
+            const budgetBtns = document.querySelectorAll('.budget-btn');
+            const budgetInput = document.getElementById('budget');
+            budgetBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    budgetBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    if (budgetInput) budgetInput.value = btn.getAttribute('data-value');
+                });
+            });
+
+            // Helper for feedback
+            function showFeedback(elementId, message, isSuccess) {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.innerText = message;
+                    element.style.display = 'block';
+                    element.style.color = isSuccess ? '#4ade80' : '#f87171';
+                    if (isSuccess) {
+                        const successModal = document.getElementById('successModal');
+                        if (successModal) successModal.classList.add('active');
+                    }
+                }
+            }
+
+            // Contact Form
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const submitBtn = contactForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerText;
+                    submitBtn.innerText = 'Sending...';
+                    submitBtn.disabled = true;
+
+                    try {
+                        const formData = {
+                            name: document.getElementById('name').value,
+                            email: document.getElementById('email').value,
+                            mobile: document.getElementById('mobile').value,
+                            type: document.getElementById('type').value,
+                            budget: document.getElementById('budget').value,
+                            contactTime: document.getElementById('contactTime').value,
+                            message: document.getElementById('message').value,
+                            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                        };
+                        await db.collection("cent-creative-homes-booking-form").add(formData);
+                        showFeedback('contactMessage', 'Sent successfully!', true);
+                        contactForm.reset();
+                    } catch (error) {
+                        console.error("Inquiry Error:", error);
+                        showFeedback('contactMessage', 'Error occurred. Please try again.', false);
+                    } finally {
+                        submitBtn.innerText = originalText;
+                        submitBtn.disabled = false;
+                    }
+                });
+            }
+
+            // Stats Animation
+            const stats = document.querySelectorAll('.stat-number');
+            const statsSection = document.querySelector('.stats-grid');
+            
+            function animateStats() {
+                stats.forEach(stat => {
+                    const target = +stat.getAttribute('data-target');
+                    if (!target || stat.classList.contains('animated')) return;
+                    stat.classList.add('animated');
+                    let current = 0;
+                    const update = () => {
+                        current += target / 50;
+                        if (current < target) {
+                            stat.innerText = Math.ceil(current);
+                            requestAnimationFrame(update);
+                        } else stat.innerText = target + '+';
+                    };
+                    update();
+                });
+            }
+
+            if (statsSection && 'IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) animateStats();
+                    });
+                }, { threshold: 0.5 });
+                observer.observe(statsSection);
+            }
+
+            // Portfolio Filtering
+            window.applyFilter = function(filterValue) {
+                const items = document.querySelectorAll('.portfolio-item');
+                items.forEach(item => {
+                    const overlayP = item.querySelector('.portfolio-overlay p');
+                    if (!overlayP) return;
+                    const cat = overlayP.innerText.toLowerCase();
+                    if (filterValue === 'all' || cat === filterValue) {
+                        item.style.display = 'block';
+                        item.style.opacity = '1';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    applyFilter(btn.getAttribute('data-filter'));
+                });
+            });
+
+            // Portfolio Overrides
+            const style = document.createElement('style');
+            style.textContent = `
+                .portfolio-grid {
+                    display: grid !important;
+                    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)) !important;
+                    grid-auto-rows: 280px !important;
+                    gap: 15px !important;
+                }
+                .portfolio-item {
+                    border: 1px solid rgba(255,255,255,0.05);
+                    background: #111;
+                    transition: transform 0.3s ease;
+                }
+                .portfolio-item:hover {
+                    z-index: 10;
+                }
+                .portfolio-item img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover !important;
+                    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+                }
+                /* Lightbox Styles */
+                .lightbox {
+                    display: none;
+                    position: fixed;
+                    z-index: 10000;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0,0,0,0.95);
+                    backdrop-filter: blur(10px);
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+                .lightbox.active {
+                    display: flex;
+                    opacity: 1;
+                }
+                .lightbox-content {
+                    max-width: 90%;
+                    max-height: 80vh;
+                    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+                    border: 1px solid rgba(255,255,255,0.1);
+                    transform: scale(0.9);
+                    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                }
+                .lightbox.active .lightbox-content {
+                    transform: scale(1);
+                }
+                .lightbox-close {
+                    position: absolute;
+                    top: 30px;
+                    right: 40px;
+                    color: #fff;
+                    font-size: 50px;
+                    font-weight: 200;
+                    cursor: pointer;
+                    line-height: 1;
+                    transition: 0.3s;
+                }
+                .lightbox-close:hover {
+                    color: var(--primary-color);
+                    transform: rotate(90deg);
+                }
+                .lightbox-caption {
+                    margin-top: 20px;
+                    color: #fff;
+                    font-size: 1.2rem;
+                    font-family: var(--font-main);
+                }
+                @media (max-width: 768px) {
+                    .portfolio-grid {
+                        grid-template-columns: 1fr !important;
+                    }
+                    .lightbox-close {
+                        right: 20px;
+                        top: 20px;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Load Portfolio
+            function loadPortfolio() {
+                const grid = document.querySelector('.portfolio-grid');
+                if (!grid) return;
+
+                db.collection("portfolio-items").orderBy("createdAt", "desc")
+                    .onSnapshot((snapshot) => {
+                        console.log("Firebase sync: " + snapshot.size + " items found.");
+                        grid.innerHTML = '';
+                        if (snapshot.empty) {
+                            grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; padding:40px;">No projects found.</p>';
+                            return;
+                        }
+                        snapshot.forEach(doc => {
+                            const data = doc.data();
+                            const div = document.createElement('div');
+                            div.className = 'portfolio-item ' + (data.isLarge ? 'item-large' : '');
+                            div.setAttribute('onclick', `openLightbox('${data.imageUrl}', '${data.title}')`);
+                            div.innerHTML = `
+                                <img src="${data.imageUrl}" alt="${data.title}">
+                                <div class="portfolio-overlay">
+                                    <h3>${data.title}</h3>
+                                    <p>${data.category}</p>
+                                    <span style="font-size: 0.8rem; margin-top: 10px; display: block; color: var(--primary-color);"><i class="fa-solid fa-expand"></i> View</span>
+                                </div>
+                            `;
+                            grid.appendChild(div);
+                        });
+                        
+                        const active = document.querySelector('.filter-btn.active');
+                        if (active && active.getAttribute('data-filter') !== 'all') {
+                            applyFilter(active.getAttribute('data-filter'));
+                        }
+                    }, (error) => {
+                        console.error("Firebase Snapshot Error:", error);
+                        grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:red; padding:20px;">Failed to connect to results gallery. Check internet connection.</p>';
+                    });
+            }
+
+            loadPortfolio();
+        })();
+    </script>
 </body>
 
 </html>
