@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Architects in Indore | Residential & Commercial Architecture Design</title>
+    <meta name="description" content="Looking for the best architects in Indore? Cent Creative Homes offers premium residential and commercial architecture design services, transforming ideas into iconic spaces.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .service-hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(13, 17, 23, 0.8), rgba(13, 17, 23, 0.95)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000') no-repeat center/cover;
+            text-align: center;
+        }
+        .section-padding { padding: 80px 0; }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .gallery-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .gallery-content {
+            padding: 20px;
+        }
+        .gallery-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .gallery-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        /* FAQ Styles */
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 15px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+            user-select: none;
+        }
+        .faq-question:hover { color: var(--primary-color); }
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--text-muted);
+        }
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 300px;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar scrolled">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Cent Creative Homes Logo"> Cent Creative Homes
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#services" class="active">Services</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="index.html#contact" class="btn btn-primary">Book Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="service-hero">
+        <div class="container">
+            <span class="hero-badge">Top Architects in Indore</span>
+            <h1>Architecture <span class="text-gradient">Design</span></h1>
+            <p style="margin: 20px auto; max-width: 600px; color: var(--text-muted); font-size: 1.1rem;">
+                Award-winning architectural master planning for both commercial and residential projects. 
+                We combine striking aesthetic vision with high-performance engineering.
+            </p>
+        </div>
+    </header>
+
+    <!-- Residential Architecture Section -->
+    <section class="section-padding" style="background-color: var(--bg-color);">
+        <div class="container">
+            <div class="section-header text-center" style="margin-bottom: 40px;">
+                <span class="subtitle">Custom Homes</span>
+                <h2>Residential Architecture</h2>
+                <p style="margin: 0 auto;">Designing iconic, functional, and deeply personal living spaces. Whether it's a luxury villa or a modern apartment, we realize your dream through our creativity.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1000" alt="Luxury Villa Design">
+                    <div class="gallery-content">
+                        <h4>The Emerald Villa</h4>
+                        <p>A stunning, multi-level luxury residence focusing on maximal natural lighting and seamless indoor-outdoor living integration.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1000" alt="Modern Glass Concept">
+                    <div class="gallery-content">
+                        <h4>Glass Horizon Home</h4>
+                        <p>A minimalist architectural feat utilizing smart-glass technology to blend the structure flawlessly with its natural surroundings.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1000" alt="Urban Contemporary Home">
+                    <div class="gallery-content">
+                        <h4>Urban Contemporary Retreat</h4>
+                        <p>Optimizing vertical space in a tight urban plot, providing sprawling living areas without compromising on privacy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 50px;">
+                <a href="https://wa.me/918821833411?text=Hello%20Cent%20Creative%20Homes,%20I%20am%20interested%20in%20your%20Residential%20Architecture%20services." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Inquire About Residential Design</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commercial Architecture Section -->
+    <section class="section-padding" style="background-color: var(--secondary-bg);">
+        <div class="container">
+            <div class="section-header text-center" style="margin-bottom: 40px;">
+                <span class="subtitle">Business & Retail</span>
+                <h2>Commercial Architecture</h2>
+                <p style="margin: 0 auto;">Strategic space planning and bold exterior designs for retail complexes, corporate offices, and institutional buildings that elevate brand identity and maximize ROI.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000" alt="Corporate Headquarters">
+                    <div class="gallery-content">
+                        <h4>Apex Corporate Tower</h4>
+                        <p>A state-of-the-art office skyscraper featuring sustainable materials, energy-efficient facades, and collaborative workspaces.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000" alt="Modern Retail Complex">
+                    <div class="gallery-content">
+                        <h4>The Grand Plaza Mall</h4>
+                        <p>Dynamic commercial retail architecture designed to optimize foot traffic while providing a premium shopping experience.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1000" alt="Boutique Hotel Design">
+                    <div class="gallery-content">
+                        <h4>Lumina Boutique Hotel</h4>
+                        <p>An architectural fusion of local cultural elements and hyper-modern aesthetics designed for the luxury hospitality sector.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 50px;">
+                <a href="https://wa.me/918821833411?text=Hello%20Cent%20Creative%20Homes,%20I%20am%20interested%20in%20your%20Commercial%20Architecture%20services." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Inquire About Commercial Design</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section-padding" style="background-color: var(--bg-color);">
+        <div class="container" style="max-width: 800px;">
+            <div class="section-header text-center">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about our architectural services in Indore.</p>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-question">What is included in your Architecture Design service? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer">
+                        <p>Our architectural services cover everything from the initial site analysis, conceptual sketches, and 3D elevations, to the final blueprint preparation, structural engineering plans, and municipal approval drawings.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you handle both residential and commercial plots? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer">
+                        <p>Yes, we boast a highly versatile team of top architects in Indore equipped to handle everything from bespoke luxury villas and duplexes to large-scale commercial towers, hotels, and retail complexes.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How long does the architectural planning phase take? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer">
+                        <p>The timeline varies depending on project scope. A standard residential plan typically takes 2-4 weeks to finalize iterations, whereas massive commercial projects can take a few months. We prioritize thoroughness to ensure structural perfection.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Are your designs Vastu compliant? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer">
+                        <p>Absolutely. We specialize in merging modern architectural best practices with traditional Vastu Shastra principles to ensure your space attracts positive energy without compromising on a contemporary aesthetic.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="Cent Creative Homes Logo"> Cent Creative Homes
+                </a>
+                <p>Award-winning architectural studio specializing in modern residential and commercial design.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2025 Cent Creative Homes. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918821833411?text=Hello%20Cent%20Creative%20Homes,%20I%20would%20like%20to%20discuss%20a%20project." 
+       class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="Portfolio Image">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <style>
+        .lightbox {
+            position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center;
+            flex-direction: column; opacity: 0; transition: opacity 0.3s ease;
+        }
+        .lightbox.active { display: flex; opacity: 1; }
+        .lightbox-content {
+            max-width: 90%; max-height: 80vh; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: scale(0.9); transition: transform 0.3s ease;
+        }
+        .lightbox.active .lightbox-content { transform: scale(1); }
+        .lightbox-close {
+            position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold;
+            cursor: pointer; transition: color 0.3s;
+        }
+        .lightbox-close:hover { color: var(--primary-color); }
+        .lightbox-caption { color: white; margin-top: 15px; font-size: 1.2rem; text-align: center; }
+        @media (max-width: 768px) { .lightbox-close { top: 10px; right: 20px; font-size: 30px; } }
+    </style>
+
+    <script>
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const activeItem = document.querySelector('.faq-item.active');
+                if (activeItem && activeItem !== faqItem) activeItem.classList.remove('active');
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.querySelector('.lightbox-close');
+
+        function openLightbox(src, title) {
+            lightboxImg.src = src;
+            lightboxCaption.innerText = title;
+            lightbox.classList.add('active');
+        }
+
+        lightboxClose.onclick = () => lightbox.classList.remove('active');
+        lightbox.onclick = (e) => { if (e.target === lightbox) lightbox.classList.remove('active'); }
+
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => {
+                const title = img.nextElementSibling.querySelector('h4').innerText;
+                openLightbox(img.src, title);
+            });
+        });
+    </script>
+</body>
+</html>
