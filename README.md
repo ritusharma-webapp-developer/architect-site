@@ -17,11 +17,7 @@ This is a premium, responsive website template for an Architecture/Design firm, 
 
 ## How to Run:
 1. Open `index.html` in your web browser.
-2. To test the Admin Panel:
-   - Go to the "Contact" section and submit a form.
-   - Click "Admin Login" in the navbar (or go to `login.html`).
-   - Log in with password: **admin123**
-   - You will see your submission in the dashboard.
+ 
 
 ## Note on CMS/Database:
 Since this environment does not support server-side languages (Node.js/Python), a real Backend Database (SQL/MongoDB) could not be connected. Instead, we used **Local Storage** to fully simulate the experience of a functional database and CMS. In a production environment, this logic would be replaced by a real backend API.
