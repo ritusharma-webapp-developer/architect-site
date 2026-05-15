@@ -5,12 +5,10 @@ This is a premium, responsive website template for an Architecture/Design firm, 
 ## Features implemented:
 - **Premium UI/UX**: Dark mode with gold accents, smooth scrolling, and hover effects.
 - **Dynamic Contact Form**: Submits data to a local "database".
-- **Admin Dashboard**: A protected area (`/admin.html`) to view and manage client inquiries.
 - **Mock Database**: Uses `localStorage` to simulate a database for the inquiry form and admin panel. (Data persists in your specific browser).
 
 ## Project Structure:
 - `index.html`: Main landing page with Home, Services, Portfolio, Contact.
-- `login.html`: Admin login page.
 - `admin.html`: Dashboard to view form submissions.
 - `style.css`: All designs using Vanilla CSS.
 - `script.js`: Logic for animations, form handling, and navigation.
