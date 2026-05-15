@@ -277,7 +277,7 @@
             </div>
         </div>
         <div class="footer-bottom container">
-            <p>&copy; 2025 Cent Creative Homes. All rights reserved.</p>
+            <p>&copy; Cent Creative Homes. All rights reserved.</p>
             <div class="social-links">
                 <a href="https://www.youtube.com/centcreativehomes" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
                 <a href="https://www.instagram.com/centcreativehomes/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -294,10 +294,14 @@
     </a>
 
     <!-- Video Modal -->
-    <div class="video-modal" id="videoModal">
-        <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
-        <div class="video-container-modal">
-            <iframe id="videoFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div id="videoModal" class="video-modal">
+        <div class="modal-content">
+            <button class="close-modal" title="Close">&times;</button>
+            <div class="video-wrapper">
+                <iframe id="videoFrame" src="" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 
