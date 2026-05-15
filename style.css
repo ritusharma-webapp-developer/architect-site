@@ -524,6 +524,10 @@ img {
     color: var(--text-muted);
 }
 
+.info-item p a:hover {
+    color: var(--primary-color);
+}
+
 .contact-form-wrapper {
     background-color: var(--card-bg);
     padding: 50px;
@@ -1301,4 +1305,46 @@ footer {
     .hero h1 { font-size: 1.8rem; }
     .hero p { font-size: 0.95rem; }
     .budget-selector { grid-template-columns: 1fr; }
+}
+/* Back Button */
+.back-btn {
+    position: fixed;
+    top: 110px;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 1100;
+    background: rgba(13, 17, 23, 0.8);
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.back-btn:hover {
+    color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
+    transform: translateX(-5px);
+}
+
+.back-btn i {
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .back-btn {
+        top: 100px;
+        left: 20px;
+        font-size: 0.8rem;
+        padding: 8px 15px;
+    }
 }
